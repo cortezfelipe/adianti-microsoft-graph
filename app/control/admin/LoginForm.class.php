@@ -131,7 +131,7 @@ class LoginForm extends TPage
         {
             $data = (object) $param;
             
-            if($data->email){
+            if(isset($data->email)){
                 TTransaction::open('permission');
                 $user = SystemUser::newFromEmail($data->email);
                
