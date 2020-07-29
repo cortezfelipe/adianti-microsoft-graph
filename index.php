@@ -6,7 +6,19 @@ $public = in_array($class, $ini['permission']['public_classes']);
 
 // AdiantiCoreApplication::setRouter(array('AdiantiRouteTranslator', 'translate'));
 
+
+
 new TSession;
+
+if(isset($_SESSION['token'])){
+    $token = $_SESSION['token'];
+    $email = $_SESSION['email'];
+    TSession::setValue('token',$token);
+    unset($_SESSION['token']);
+    unset($_SESSION['email']);
+}
+
+
 ApplicationTranslator::setLanguage( TSession::getValue('user_language'), true );
 
 if ( TSession::getValue('logged') )
@@ -44,6 +56,11 @@ if (TSession::getValue('logged') OR $public)
 }
 else
 {
+    if (isset($email)){
+       $param['email'] = $email;
+       AdiantiCoreApplication::loadPage('LoginForm', 'onLogin', $param);
+    }
+    
     if (isset($ini['general']['public_view']) && $ini['general']['public_view'] == '1')
     {
         if (!empty($ini['general']['public_entry']))

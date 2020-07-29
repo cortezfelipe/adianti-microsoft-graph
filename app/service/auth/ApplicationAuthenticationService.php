@@ -6,7 +6,7 @@ class ApplicationAuthenticationService
     /**
      * Authenticate user and load permissions
      */
-    public static function authenticate($login, $password)
+    public static function authenticate($login, $password )
     {
         $ini  = AdiantiApplicationConfig::get();
         
