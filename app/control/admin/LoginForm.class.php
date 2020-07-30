@@ -131,51 +131,6 @@ class LoginForm extends TPage
         {
             $data = (object) $param;
             
-            if(isset($data->email)){
-                TTransaction::open('permission');
-                $user = SystemUser::newFromEmail($data->email);
-               
-                if ($user)
-                {
-                    $programs = $user->getPrograms();
-                    $programs['LoginForm'] = TRUE;
-                    
-                    TSession::setValue('logged', TRUE);
-                    TSession::setValue('login', $user->login);
-                    TSession::setValue('userid', $user->id);
-                    TSession::setValue('usergroupids', $user->getSystemUserGroupIds());
-                    TSession::setValue('userunitids', $user->getSystemUserUnitIds());
-                    TSession::setValue('username', $user->name);
-                    TSession::setValue('usermail', $user->email);
-                    TSession::setValue('frontpage', '');
-                    TSession::setValue('programs',$programs);
-                    
-                    if (!empty($user->unit))
-                    {
-                        TSession::setValue('userunitid',$user->unit->id);
-                        TSession::setValue('userunitname', $user->unit->name);
-                    } 
-                    //isset($data->lang_id) ? $data->lang_id : null;
-                    ApplicationAuthenticationService::setUnit( isset($data->unit_id) ? $data->unit_id : null );
-                    ApplicationAuthenticationService::setLang( isset($data->lang_id) ? $data->lang_id : null );
-                    SystemAccessLogService::registerLogin();
-                    
-                    $frontpage = $user->frontpage;
-                    if ($frontpage instanceof SystemProgram and $frontpage->controller)
-                    {
-                        AdiantiCoreApplication::gotoPage($frontpage->controller); // reload
-                        TSession::setValue('frontpage', $frontpage->controller);
-                    }
-                    else
-                    {
-                        AdiantiCoreApplication::gotoPage('EmptyPage'); // reload
-                        TSession::setValue('frontpage', 'EmptyPage');
-                    }
-                  TTransaction::close();            
-            }
-            
-            }else{
-            
             (new TRequiredValidator)->validate( _t('Login'),    $data->login);
             (new TRequiredValidator)->validate( _t('Password'), $data->password);
             
@@ -205,8 +160,6 @@ class LoginForm extends TPage
                     AdiantiCoreApplication::gotoPage('EmptyPage'); // reload
                     TSession::setValue('frontpage', 'EmptyPage');
                 }
-            }
-            //if login email
             }
             TTransaction::close();
         }

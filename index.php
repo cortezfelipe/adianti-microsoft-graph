@@ -4,9 +4,7 @@ $theme  = $ini['general']['theme'];
 $class  = isset($_REQUEST['class']) ? $_REQUEST['class'] : '';
 $public = in_array($class, $ini['permission']['public_classes']);
 
-// AdiantiCoreApplication::setRouter(array('AdiantiRouteTranslator', 'translate'));
-
-
+//AdiantiCoreApplication::setRouter(array('AdiantiRouteTranslator', 'translate'));
 
 new TSession;
 
@@ -16,6 +14,13 @@ if(isset($_SESSION['token'])){
     TSession::setValue('token',$token);
     unset($_SESSION['token']);
     unset($_SESSION['email']);
+    
+    TTransaction::open('permission');
+    $user = SystemUser::newFromEmail($email);
+    if($user){
+    ApplicationAuthenticationService::loadSessionVars($user);
+    }
+    TTransaction::close();
 }
 
 
@@ -56,10 +61,6 @@ if (TSession::getValue('logged') OR $public)
 }
 else
 {
-    if (isset($email)){
-       $param['email'] = $email;
-       AdiantiCoreApplication::loadPage('LoginForm', 'onLogin', $param);
-    }
     
     if (isset($ini['general']['public_view']) && $ini['general']['public_view'] == '1')
     {
