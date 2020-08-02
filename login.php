@@ -11,7 +11,7 @@ session_start();
     //chamada a API para autenticar o Token
     $oauthClient = new \League\OAuth2\Client\Provider\GenericProvider([
     'clientId'                => '67938d06-5ac6-4707-acd2-460030edf946',
-    'clientSecret'            => '2bS8Uo2j.lg64S5~Q9bRhCtB74odd_9T6~',
+    'clientSecret'            => 'senha',
     'redirectUri'             => 'http://localhost/adianti-microsoft-graph/login.php',
     'urlAuthorize'            => 'https://login.microsoftonline.com/common/oauth2/v2.0/token',
     'urlAccessToken'          => 'https://login.microsoftonline.com/common/oauth2/v2.0/token',
