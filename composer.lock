@@ -457,9 +457,9 @@
             "authors": [
                 {
                     "name": "Joe Gillotti",
-                    "role": "Author",
                     "email": "joe@joegillotti.com",
-                    "homepage": "http://joegillotti.com"
+                    "homepage": "http://joegillotti.com",
+                    "role": "Author"
                 }
             ],
             "description": "App and library for easily parsing and displaying system information of the host, like network/torrents/cpu/memory/usb/pci/sound cards/filesystems/raid array/ipmi/etc.",
@@ -542,7 +542,7 @@
                 "./"
             ],
             "license": [
-                "PHP"
+                "PHP-3.01"
             ],
             "authors": [
                 {
@@ -556,10 +556,10 @@
                     "role": "Lead"
                 }
             ],
-            "description": "More info available on: http://pear.php.net/package/OLE",
+            "description": "Derivation from pear OLE without PEAR dependency, and with Exceptions instead of PearErrors.",
             "support": {
-                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=OLE",
-                "source": "https://github.com/pablodalloglio/OLE"
+                "source": "https://github.com/pablodalloglio/OLE",
+                "issues": "https://github.com/pablodalloglio/ole/issues"
             },
             "time": "2018-04-26T14:25:39+00:00"
         },
@@ -596,7 +596,7 @@
                 "./"
             ],
             "license": [
-                "LGPL"
+                "LGPL-2.1-or-later"
             ],
             "authors": [
                 {
@@ -620,10 +620,10 @@
                     "role": "Developer"
                 }
             ],
-            "description": "More info available on: http://pear.php.net/package/Spreadsheet_Excel_Writer",
+            "description": "Derivation from SpreadsheetExcelWriter without PEAR dependency, and with Exceptions instead of PearErrors.",
             "support": {
-                "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=Spreadsheet_Excel_Writer",
-                "source": "https://github.com/pear/Spreadsheet_Excel_Writer"
+                "source": "https://github.com/pablodalloglio/spreadsheet_excel_writer",
+                "issues": "https://github.com/pablodalloglio/spreadsheet_excel_writer/issues"
             },
             "time": "2018-04-26T14:06:36+00:00"
         },
@@ -755,34 +755,34 @@
         },
         {
             "name": "phpmailer/phpmailer",
-            "version": "v6.0.7",
+            "version": "v6.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "0c41a36d4508d470e376498c1c0c527aa36a2d59"
+                "reference": "a5b5c43e50b7fba655f793ad27303cd74c57363c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/0c41a36d4508d470e376498c1c0c527aa36a2d59",
-                "reference": "0c41a36d4508d470e376498c1c0c527aa36a2d59",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/a5b5c43e50b7fba655f793ad27303cd74c57363c",
+                "reference": "a5b5c43e50b7fba655f793ad27303cd74c57363c",
                 "shasum": ""
             },
             "require": {
                 "ext-ctype": "*",
                 "ext-filter": "*",
+                "ext-hash": "*",
                 "php": ">=5.5.0"
             },
             "require-dev": {
-                "doctrine/annotations": "1.2.*",
-                "friendsofphp/php-cs-fixer": "^2.2",
-                "phpdocumentor/phpdocumentor": "2.*",
-                "phpunit/phpunit": "^4.8 || ^5.7",
-                "zendframework/zend-eventmanager": "3.0.*",
-                "zendframework/zend-i18n": "2.7.3",
-                "zendframework/zend-serializer": "2.7.*"
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                "doctrine/annotations": "^1.2",
+                "phpcompatibility/php-compatibility": "^9.3.5",
+                "roave/security-advisories": "dev-latest",
+                "squizlabs/php_codesniffer": "^3.5.6",
+                "yoast/phpunit-polyfills": "^0.2.0"
             },
             "suggest": {
-                "ext-mbstring": "Needed to send email in multibyte encoding charset",
+                "ext-mbstring": "Needed to send email in multibyte encoding charset or decode encoded addresses",
                 "hayageek/oauth2-yahoo": "Needed for Yahoo XOAUTH2 authentication",
                 "league/oauth2-google": "Needed for Google XOAUTH2 authentication",
                 "psr/log": "For optional PSR-3 debug logging",
@@ -797,16 +797,16 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL-2.1"
+                "LGPL-2.1-only"
             ],
             "authors": [
                 {
-                    "name": "Jim Jagielski",
-                    "email": "jimjag@gmail.com"
-                },
-                {
                     "name": "Marcus Bointon",
                     "email": "phpmailer@synchromedia.co.uk"
+                },
+                {
+                    "name": "Jim Jagielski",
+                    "email": "jimjag@gmail.com"
                 },
                 {
                     "name": "Andy Prevost",
@@ -817,7 +817,13 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2019-02-01T15:04:28+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/Synchro",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-06-16T14:33:43+00:00"
         },
         {
             "name": "phprtflite/phprtflite",
